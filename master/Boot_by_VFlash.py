@@ -11,7 +11,7 @@
 #2 : 1030D
 #3 : 1030C-ext
 
-EN = 3
+EN = 2
 
 hostname = "olt"
 host_ip = "10.0.0.66 255.255.255.0 "
@@ -147,7 +147,7 @@ def rebByVflash():
         sendCmd(["ip add " + host_ip])
         sendCmd(["copy tftp:" + src_switch_bin + "flash:" + dst_switch_bin + pc_ip])
     elif temp == 2: #Forgot to modify the tftp server path 
-        sendCmd("vflash information")
+        sendCmd(["vflash information"])
         if waitStr(["Unknown command", "small block size"], 1) == 2:
             sendCmd(["copy tftp:" + src_switch_bin + "flash:" + dst_switch_bin + pc_ip])
         else:
