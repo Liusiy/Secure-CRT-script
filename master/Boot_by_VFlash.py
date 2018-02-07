@@ -41,27 +41,6 @@ mode_diag = [hostname+"(D)#", hostname+"_config(D)#"]
 
 #mode_intf = 'olt_config_gpon'+ slot + '/' + link + '#'
 
-#def quitAndReb():
-#    for j in range(5):
-#        crt.Screen.Send(chr(13))
-#        if crt.Screen.WaitForStrings(["olt>", "olt"]) == 1:
-#            crt.Screen.Send("su")
-#            crt.Screen.Send("reb n" + chr(13))
-#            break
-#        crt.Screen.Send("quit")
-
-#    position = crt.Screen.WaitForStrings(["olt", ">", "..."])
-#    if position == 1:
-#        quitAndReb()
-#    else:
-#        for i in range(5):
-#            crt.Screen.Send("/" + chr(13))
-#            if crt.Screen.WaitForStrings(["> ~"]) == 1:
-#                crt.Screen.Send("Quit" + chr(13)*2)
-#                quitAndReb()
-#                break
-#
-
 def sendCmd(cmd_list):
     for i in cmd_list:
         crt.Screen.Send(i + chr(13))
@@ -117,12 +96,10 @@ def rebToMonitor():
     if waitStr(["                 Welcome to BDCOM GP3600-08 OLT"], 0) == 1:
         sendCmd([chr(13)])
                 
-
 #    if waitStr(["RTC Test"]) == 1:
 #        for i in range(3):
 #            sendCmdKeys("^p")
 #            crt.Sleep(100)
-
 
 def rebByVflash():
     sendCmd([chr(13)])
